@@ -5,42 +5,63 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
-        boolean ansewrs_autentication;
         Usuario user = new Usuario();
-        Scanner entrada = new Scanner(System.in);
+        Scanner entrada = new Scanner(java.lang.System.in);
 
-        System.out.print("Digite o seu Usuário: ");
-        user.nome = entrada.next();
+        while (true) {
 
-        System.out.print("Digite sua senha: ");
-        user.senha = entrada.next();
+            java.lang.System.out.println("Bem-vindo ao DOCES CORPORATION");
 
-        ansewrs_autentication = user.autentication(user.nome, user.senha);
 
-        do{
-            if(ansewrs_autentication == true){
-                System.out.println("FINI CORPORATION");
-                System.out.println("-----------------------------");
-                System.out.println(" ******** Menu ******** ");
-                System.out.println(" ### V - VENDAS   ### ");
-                System.out.println(" ### P - PRODUÇÃO ### ");
-                System.out.println(" ### E - ESTOQUE  ### ");
-                System.out.println(" ### S - SAIR     ###");
-                System.out.println("-----------------------------");
-                System.out.print("Qual opção desejada: ");
-                String opcao = entrada.next();
+            while (!user.nome.equals("admin") && !user.senha.equals("123")) {
+                java.lang.System.out.print("Login: ");
+                user.nome = entrada.nextLine();
 
-                if(opcao.equalsIgnoreCase("s") || opcao.equalsIgnoreCase("S")){
-                    ansewrs_autentication = false;
+                java.lang.System.out.print("Senha: ");
+                user.senha = entrada.nextLine();
+
+                if (!user.nome.equals("admin") && !user.senha.equals("123")) {
+                    java.lang.System.out.println("Login ou senha incorretos. Tente Novamente.");
                 }
             }
-            else {
-                System.out.println("Permissão Negada");
-            }
-        } while(ansewrs_autentication == true);
-            System.out.println("Obrigado por usar o Sistema!!!");
-            entrada.close();
 
+            java.lang.System.out.println("Login realizado com sucesso!!!");
+
+            java.lang.System.out.println("DOCES CORPORATION");
+            java.lang.System.out.println("-----------------------------");
+            java.lang.System.out.println(" ******** Menu ******** ");
+            java.lang.System.out.println(" ### 1 - VENDAS   ### ");
+            java.lang.System.out.println(" ### 2 - PRODUÇÃO ### ");
+            java.lang.System.out.println(" ### 3 - ESTOQUE  ### ");
+            java.lang.System.out.println(" ### 4 - SAIR     ###");
+            java.lang.System.out.println("-----------------------------");
+
+            int opcao = 0;
+
+            do {
+                java.lang.System.out.print("Qual opção desejada: ");
+                opcao = entrada.nextInt();
+
+                switch (opcao){
+                    case 1:
+                        java.lang.System.out.println("VOCÊ ESCOLHEU DEPARTAMENTO DE VENDAS");
+                        break;
+                    case 2:
+                        java.lang.System.out.println("VOCÊ ESCOLHEU DEPARTAMENTO DE PRODUÇÃO");
+                        break;
+                    case 3:
+                        java.lang.System.out.println("VOCÊ ESCOLHEU DEPARTAMENTO DE ESTOQUE");
+                        break;
+                    case 4:
+                        java.lang.System.out.println("Saindo do sistema...");
+                        break;
+                    default:
+                        java.lang.System.out.println("Opção Inválida");
+                        break;
+                }
+            } while (opcao != 4);
+
+            java.lang.System.out.println("Retornando a tela de login........");
+        }
     }
 }
