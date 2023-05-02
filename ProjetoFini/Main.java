@@ -1,67 +1,76 @@
-import javax.sound.midi.Soundbank;
-import javax.swing.*;
 import java.util.Scanner;
-
 public class Main {
+    public static void main(String[] args) throws InterruptedException {
 
-    public static void main(String[] args) {
         Usuario user = new Usuario();
+        user.nome = "";
+        user.senha = "";
         Scanner entrada = new Scanner(java.lang.System.in);
-
+        Inventario estoque = new Inventario();
+        Vendas vendas = new Vendas();
         while (true) {
 
-            java.lang.System.out.println("Bem-vindo ao DOCES CORPORATION");
+            System.out.println("#         DOCES CORPORATION        #");
+            System.out.println("####################################");
+            System.out.println("#              1-LOGIN             #");
+            System.out.println("#              2-SAIR              #");
+            System.out.println("####################################");
+            System.out.print("# DIGITE A OPÇÃO: ");
+            int escolha = entrada.nextInt();
+            switch (escolha) {
+                case 1:
+                    while(!user.nome.equals("admin") || !user.senha.equals("1234")){
 
+                        System.out.print("Login: ");
+                        user.nome = entrada.next();
+                        System.out.print("Senha: ");
+                        user.senha = entrada.next();
 
-            while (!user.nome.equals("admin") && !user.senha.equals("123")) {
-                java.lang.System.out.print("Login: ");
-                user.nome = entrada.nextLine();
-
-                java.lang.System.out.print("Senha: ");
-                user.senha = entrada.nextLine();
-
-                if (!user.nome.equals("admin") && !user.senha.equals("123")) {
-                    java.lang.System.out.println("Login ou senha incorretos. Tente Novamente.");
-                }
+                        if(!user.nome.equals("admin") || !user.senha.equals("1234")){
+                            System.out.println("Login ou senha incorretos. Tente Novamente.");
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("#            FECHANDO...           #");
+                    Thread.sleep(2000);
+                    Runtime.getRuntime().exit(0);
+                    break;
             }
-
-            java.lang.System.out.println("Login realizado com sucesso!!!");
-
-            java.lang.System.out.println("DOCES CORPORATION");
-            java.lang.System.out.println("-----------------------------");
-            java.lang.System.out.println(" ******** Menu ******** ");
-            java.lang.System.out.println(" ### 1 - VENDAS   ### ");
-            java.lang.System.out.println(" ### 2 - PRODUÇÃO ### ");
-            java.lang.System.out.println(" ### 3 - ESTOQUE  ### ");
-            java.lang.System.out.println(" ### 4 - SAIR     ###");
-            java.lang.System.out.println("-----------------------------");
-
+            System.out.println("#    LOGIN EFETUADO COM SUCESSO    #");
+            System.out.println("#            ENTRANDO...           #");
+            Thread.sleep(1500);
             int opcao = 0;
-
             do {
-                java.lang.System.out.print("Qual opção desejada: ");
+                System.out.println("DOCES CORPORATION");
+                System.out.println("#############################");
+                System.out.println(" ###### Menu ######## ");
+                System.out.println(" ### 1 - VENDAS   ### ");
+                System.out.println(" ### 2 - ESTOQUE  ### ");
+                System.out.println(" ### 3 - SAIR     ###");
+                System.out.println("#############################");
+                System.out.print("# OPÇÃO: ");
                 opcao = entrada.nextInt();
 
-                switch (opcao){
+                switch (opcao) {
                     case 1:
-                        java.lang.System.out.println("VOCÊ ESCOLHEU DEPARTAMENTO DE VENDAS");
+                        vendas.menuVendas();
                         break;
                     case 2:
-                        java.lang.System.out.println("VOCÊ ESCOLHEU DEPARTAMENTO DE PRODUÇÃO");
+                        estoque.visualizarMenuEstoque();
                         break;
                     case 3:
-                        java.lang.System.out.println("VOCÊ ESCOLHEU DEPARTAMENTO DE ESTOQUE");
-                        break;
-                    case 4:
-                        java.lang.System.out.println("Saindo do sistema...");
+                        System.out.println("Saindo do sistema...");
                         break;
                     default:
-                        java.lang.System.out.println("Opção Inválida");
+                        System.out.println("Opção Inválida");
                         break;
                 }
-            } while (opcao != 4);
-
-            java.lang.System.out.println("Retornando a tela de login........");
+            } while (opcao != 3);
+            user.nome = "";
+            user.senha = "";
+            System.out.println("Retornando a tela de login........");
+            Thread.sleep(2000);
         }
     }
 }
