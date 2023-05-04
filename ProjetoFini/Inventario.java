@@ -11,9 +11,9 @@ public class Inventario {
     int amoras = 2;
     int qtdNova;
     int idLocalizado;
+    
     void inserirEstoque(){
-
-        System.out.print("Digite codigo do produto: ");
+    	System.out.print("Digite codigo do produto: ");
         codigo = entrada.nextInt();
 
         System.out.print("Digite o nome do produto: ");
@@ -73,6 +73,7 @@ public class Inventario {
         int qtdMorango = 2;
         int qtdLeite = 2;
         int qtdAcucar = 1;
+        
         System.out.println("Produzindo .....");
         if(
                 item.get(0).icodigo == codigoMorango &&
